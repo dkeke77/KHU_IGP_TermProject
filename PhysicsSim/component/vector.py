@@ -47,6 +47,17 @@ class Vector:
     
     def cross(self, other):
         return self.x * other.y - self.y * other.x
+    
+    def rotate(self, angle, in_radians = True):
+        if not in_radians:
+            angle = math.radians(angle)
+
+        cos = math.cos(angle)
+        sin = math.sin(angle)
+        x = self.x * cos - self.y * sin
+        y = self.x * sin + self.y * cos
+        
+        return Vector(x, y)
 
     # Operator Overloading
     def __add__(self, other):
